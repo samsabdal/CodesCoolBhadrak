@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codes Cool - Coding School of Bhadrak</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700&display=swap" rel="stylesheet">
+   <style>
+ /* --- 1. VARIABLES & RESET --- */
+:root {
+    --primary-blue: #1e3c72;
+    --primary-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    --accent-yellow: #ffeb3b;
+    --bg-theme: #fffbe7;
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+    --glass-blur: blur(12px);
+    --text-dark: #222;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: var(--primary-gradient);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- 2. HEADER STYLES (WITH BACKGROUND IMAGE) --- */
+header {
+    text-align: center;
+    padding: 180px 20px 60px 20px;
+    background: var(--bg-theme); /* Base cream color behind image */
+    color: var(--text-dark);
+    position: relative; /* Essential for positioning the pseudo-element */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden; /* Ensures image doesn't spill out */
+}
+
+/* The Background Image Layer */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    
+    /* BACKGROUND IMAGE URL - Replace this with your own image if needed */
+    background: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+    background-size: cover;
+    
+    opacity: 0.6; /* 60% Opacity */
+    z-index: 0;   /* Sits behind text */
+    pointer-events: none;
+}
+
+/* Ensure Text & Scroll Indicator sit ON TOP of the image */
+header .tagline,
+header p,
+header .scroll-indicator {
+    position: relative;
+    z-index: 2; /* Higher than the background layer */
+}
+
+/* --- 2. NEON ANIMATION DEFINITION --- */
+/* --- NEON ANIMATION (YELLOW VERSION) --- */
+@keyframes neon-pulse {
+    0% {
+        /* Soft Gold/Amber Glow (Dim State) */
+        box-shadow: 0 0 5px rgba(255, 193, 7, 0.4), 
+                    0 0 10px rgba(255, 193, 7, 0.2), 
+                    inset 0 0 2px rgba(255, 193, 7, 0.2);
+        border-color: rgba(255, 193, 7, 0.4);
+    }
+    50% {
+        /* Bright Yellow Glow (#ffeb3b - Bright State) */
+        box-shadow: 0 0 15px rgba(255, 235, 59, 0.8), 
+                    0 0 30px rgba(255, 235, 59, 0.5), 
+                    inset 0 0 10px rgba(255, 235, 59, 0.3);
+        border-color: rgba(255, 235, 59, 1);
+    }
+    100% {
+        /* Loop back to Soft Gold */
+        box-shadow: 0 0 5px rgba(255, 193, 7, 0.4), 
+                    0 0 10px rgba(255, 193, 7, 0.2), 
+                    inset 0 0 2px rgba(255, 193, 7, 0.2);
+        border-color: rgba(255, 193, 7, 0.4);
+    }
+}
+
+/* --- 3. LOGO STYLES --- */
+.logo {
+    position: fixed;
+    z-index: 1002;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    transform-origin: center top;
+    
+    background: transparent;
+    border-radius: 50%;
+    padding: 0;
+    box-shadow: none;
+    
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.logo img {
+    height: 180px;
+    transition: height 0.6s ease;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.15));
+}
+
+/* SCROLLED LOGO: Box + Neon Effect */
+.logo.scrolled {
+    top: 15px;
+    left: 20px;
+    transform: translateX(0) scale(0.35);
+    transform-origin: top left;
+    
+    /* Box Appearance */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 10px;
+    border: 2px solid transparent; /* Required for border animation */
+    
+    /* ACTIVATE NEON ANIMATION */
+    animation: neon-pulse 3s infinite alternate ease-in-out;
+}
+
+.logo.scrolled img {
+    height: 180px; 
+    filter: none; 
+}
+
+.tagline {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    color: #444;
+}
+
+/* --- 4. NAVIGATION BAR --- */
+nav {
+    position: fixed;
+    z-index: 1001;
+    top: 280px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 2px solid rgba(255, 255, 255, 0.4); /* Thicker border for neon */
+    border-radius: 50px; 
+    padding: 8px 30px;
+    
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* ACTIVATE NEON ANIMATION (Always On) */
+    animation: neon-pulse 3s infinite alternate ease-in-out;
+    animation-delay: 0.5s; /* Slight offset from logo for visual interest */
+}
+
+/* SCROLLED NAV: Moves Right */
+nav.scrolled {
+    top: 20px;
+    left: auto;
+    right: 20px;
+    transform: translateX(0);
+    
+    background: rgba(255, 255, 255, 0.95);
+    padding: 6px 20px;
+    
+    /* Animation continues running seamlessly */
+}
+
+/* --- 5. MENU ITEMS --- */
+.nav-link {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 18px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    transition: color 0.3s ease;
+    overflow: hidden;
+    isolation: isolate; 
+}
+
+/* Ripple */
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    background: rgba(30, 60, 114, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease, border-radius 0.4s ease;
+    z-index: -1;
+}
+.nav-link:hover::before { width: 100%; height: 100%; border-radius: 30px; }
+.nav-link:hover { color: #0d254e; }
+
+/* Separator */
+.nav-link:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 50%;
+    transform: translateY(-50%);
+    height: 16px; width: 1px;
+    background-color: rgba(30, 60, 114, 0.2);
+}
+nav a { margin: 0; }
+.nav-link svg { margin-right: 6px; transition: transform 0.3s ease; }
+.nav-link:hover svg { transform: scale(1.1); }
+
+/* --- 6. MOBILE RESPONSIVENESS --- */
+/* --- MOBILE RESPONSIVENESS: UNIFIED SINGLE BOX --- */
+@media (max-width: 768px) {
+    /* 1. Base State (Top of page) */
+    .logo img { height: 140px; }
+    
+    nav { 
+        top: 230px; 
+        width: 85%; 
+        padding: 8px 10px;
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+
+    /* 2. Scrolled State - MERGE INTO SINGLE BOX */
+    
+    /* The Container Box (Nav acts as the single parent box) */
+    nav.scrolled {
+        top: 10px;
+        left: 50%; /* Center horizontally */
+        right: auto; /* Reset desktop positioning */
+        transform: translateX(-50%); /* Center perfectly */
+        
+        width: 100%; /* Wide box */
+        max-width: 400px; /* Prevent it getting too wide on tablets */
+        
+        /* Layout: Push menu items to the right, leaving space for logo on left */
+        justify-content: flex-end; 
+        padding: 12px 15px 12px 70px; /* 70px Left padding reserves space for logo */
+        box-sizing: border-box;
+        
+        /* Visuals: Inherits the Yellow Neon Pulse from the main nav class */
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    /* The Logo (Sits INSIDE the nav box) */
+    .logo.scrolled {
+        /* Position visually inside the nav padding */
+        top: 15px; 
+        left: 5vw; /* Align relative to viewport/nav */
+        z-index: 1005; /* Ensure it sits on top of nav */
+        
+        transform: scale(0.28); 
+        transform-origin: top left;
+        
+        /* CRITICAL: Remove the separate box styling for mobile */
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        backdrop-filter: none !important;
+        padding: 0 !important;
+        
+        /* Disable the separate neon animation for the logo so we don't get double glow */
+        animation: none !important; 
+    }
+
+    /* Adjust Links for tight space */
+    .nav-link { 
+        padding: 6px 8px; 
+        font-size: 0.85rem; 
+    }
+    .nav-link:not(:last-child)::after { 
+        height: 12px; 
+        right: -1px;
+    }
+}
+
+/* --- 7. OTHER COMPONENTS (Unchanged) --- */
+.scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; opacity: 1; transition: opacity 0.5s ease; pointer-events: none; }
+.scroll-indicator.hidden { opacity: 0; }
+.mouse { width: 26px; height: 40px; border: 2px solid var(--primary-blue); border-radius: 20px; position: relative; margin-bottom: 10px; }
+.wheel { width: 4px; height: 8px; background: var(--primary-blue); border-radius: 2px; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); animation: mouse-scroll 1.5s infinite; }
+@keyframes mouse-scroll { 0% { top: 6px; opacity: 1; } 100% { top: 20px; opacity: 0; } }
+.arrow span { display: block; width: 16px; height: 16px; border-bottom: 3px solid var(--primary-blue); border-right: 3px solid var(--primary-blue); transform: rotate(45deg); margin: -8px; animation: arrow-scroll 2s infinite; }
+.arrow span:nth-child(2){ animation-delay: -0.2s; } .arrow span:nth-child(3){ animation-delay: -0.4s; }
+@keyframes arrow-scroll { 0% { opacity: 0; transform: rotate(45deg) translate(-10px, -10px); } 50% { opacity: 1; } 100% { opacity: 0; transform: rotate(45deg) translate(10px, 10px); } }
+
+.intro-text { margin-top: 100px; font-size: 1.1rem; opacity: 0.8; color: #333; }
+.courses-section { max-width: 1000px; margin: 40px auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding-bottom: 80px; }
+.course-card { background: rgba(255,255,255,0.1); border-radius: 20px; box-shadow: 0 4px 30px rgba(0,0,0,0.1); backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.2); padding: 30px 24px; width: 280px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+.course-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 10px 40px rgba(0,0,0,0.2); background: rgba(255,255,255,0.15); }
+.course-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; color: var(--accent-yellow); }
+.course-desc { font-size: 0.95rem; color: #fff; line-height: 1.6; opacity: 0.9; }
+.enroll-btn { margin-top: 20px; padding: 12px 30px; background: linear-gradient(90deg, #ffeb3b 0%, #ffc107 100%); color: #222; border: none; border-radius: 30px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4); transition: transform 0.2s; }
+.enroll-btn:hover { transform: scale(1.05); }
+.wave { position: fixed; left: 0; right: 0; bottom: 0; height: 80px; background: url('data:image/svg+xml;utf8,<svg width="100%" height="80" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 40L60 46.7C120 53.3 240 67.7 360 66.7C480 65.7 600 49.3 720 37.3C840 25.3 960 17.7 1080 24C1200 30.3 1320 50.3 1380 60L1440 70V80H1380C1320 80 1200 80 1080 80C960 80 840 80 720 80C600 80 480 80 360 80C240 80 120 80 60 80H0V40Z" fill="%23fffbe7"/></svg>') repeat-x; background-size: cover; z-index: 10; pointer-events: none; }
+footer { text-align: center; padding: 24px 0 92px 0; font-size: 1rem; color: #fff; opacity: 0.8; }</style>
+</head>
+<body>
+    <header>
+        <div class="logo" id="mainLogo">
+            <img src="logo.png" alt="Codes Cool Logo">
+        </div>
+
+        <!-- <div class="tagline">Coding School of Bhadrak</div> -->
+        
+        <nav id="mainNav">
+            <a href="index.html" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 2 7.5V14a1 1 0 0 0 1 1h3.5a.5.5 0 0 0 .5-.5V11h2v3.5a.5.5 0 0 0 .5.5H13a1 1 0 0 0 1-1V7.5a.5.5 0 0 0-.146-.354l-6-6z"/>
+                </svg>
+            </a>
+            <a href="about.html" class="nav-link">About Us</a>
+            <a href="contact.html" class="nav-link">Contact Us</a>
+        </nav>
+        
+        <p class="intro-text">
+            <!-- From beginners to experts, unlock your coding potential with us! -->
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </p>
+
+        <div class="scroll-indicator" id="scrollIndicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="courses-section" id="courses">
+        </section>
+
+    <div class="wave"></div>
+    
+    <footer>
+        <div style="margin: 24px auto 0; max-width: 600px;">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.3230633834933!2d86.4961145750012!3d21.059755286713784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1c09b83dd909d3%3A0xc641ed3eedf32d1f!2sCodes%20Cool%20%7C%20Best%20Python%2C%20Java%20Training%20Institute!5e0!3m2!1sen!2sin!4v1749649989730!5m2!1sen!2sin" 
+                width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        © 2024 Codes Cool. All rights reserved.
+    </footer>
+
+    <script>
+       // --- SCROLL ANIMATION LOGIC ---
+const logo = document.getElementById('mainLogo');
+const nav = document.getElementById('mainNav');
+const scrollIndicator = document.getElementById('scrollIndicator');
+
+let ticking = false;
+
+function updateScroll() {
+    const scrollY = window.scrollY;
+    // Lower threshold for quicker response
+    const threshold = 30; 
+
+    if (scrollY > threshold) {
+        logo.classList.add('scrolled');
+        nav.classList.add('scrolled');
+        scrollIndicator.classList.add('hidden');
+    } else {
+        logo.classList.remove('scrolled');
+        nav.classList.remove('scrolled');
+        scrollIndicator.classList.remove('hidden');
+    }
+
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(updateScroll);
+        ticking = true;
+    }
+});
+
+// --- DYNAMIC CONTENT (Unchanged) ---
+const courses = [
+    { title: "Core Java", desc: "Master the fundamentals of Java programming, OOPs, and problem solving." },
+    { title: "Advanced Java", desc: "Deep dive into JDBC, Servlets, JSP, frameworks, and enterprise Java." },
+    { title: "Python", desc: "Learn Python from scratch to advanced, including data structures and automation." },
+    { title: "HTML / CSS / JS", desc: "Build beautiful, interactive websites with HTML5, CSS3, and JavaScript." },
+    { title: "Kids Coding", desc: "Fun and interactive coding classes for kids using Scratch, Blockly, and Python." },
+    { title: "Django / Flask", desc: "Develop powerful web apps with Python's Django and Flask frameworks." },
+    { title: "Major Projects", desc: "Guidance and mentoring for academic projects in various technologies." }
+];
+
+const coursesSection = document.getElementById('courses');
+courses.forEach(course => {
+    const card = document.createElement('div');
+    card.className = 'course-card';
+    card.innerHTML = `
+        <div class="course-title">${course.title}</div>
+        <div class="course-desc">${course.desc}</div>
+        <button class="enroll-btn">Enroll Now</button>
+    `;
+    const btn = card.querySelector('.enroll-btn');
+    btn.addEventListener('click', function() {
+        const message = encodeURIComponent(`I am interested in ${course.title}, Please give the details.`);
+        const whatsappUrl = `https://wa.me/917873994229?text=${message}`;
+        if (confirm("Open WhatsApp to send your enquiry?")) {
+            window.open(whatsappUrl, '_blank');
+        }
+    });
+    coursesSection.appendChild(card);
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Codes Cool</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <style>
+        /* --- 1. GLOBAL VARIABLES & RESET --- */
+        :root {
+            --primary-blue: #1e3c72;
+            --primary-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            --accent-yellow: #ffeb3b;
+            --bg-theme: #fffbe7;
+            --glass-bg: rgba(255, 255, 255, 0.6);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+            --glass-blur: blur(12px);
+            --text-dark: #222;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--primary-gradient);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- 2. HEADER STYLES (NEW ANIMATIONS) --- */
+        header {
+            text-align: center;
+            padding: 180px 20px 60px 20px;
+            background: var(--bg-theme);
+            color: var(--text-dark);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Neon Pulse Animation (Yellow) */
+        @keyframes neon-pulse {
+            0% {
+                box-shadow: 0 0 5px rgba(255, 193, 7, 0.4), 
+                            0 0 10px rgba(255, 193, 7, 0.2), 
+                            inset 0 0 2px rgba(255, 193, 7, 0.2);
+                border-color: rgba(255, 193, 7, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(255, 235, 59, 0.8), 
+                            0 0 30px rgba(255, 235, 59, 0.5), 
+                            inset 0 0 10px rgba(255, 235, 59, 0.3);
+                border-color: rgba(255, 235, 59, 1);
+            }
+            100% {
+                box-shadow: 0 0 5px rgba(255, 193, 7, 0.4), 
+                            0 0 10px rgba(255, 193, 7, 0.2), 
+                            inset 0 0 2px rgba(255, 193, 7, 0.2);
+                border-color: rgba(255, 193, 7, 0.4);
+            }
+        }
+
+        /* Logo Styles */
+        .logo {
+            position: fixed;
+            z-index: 1002;
+            top: 50px; left: 50%;
+            transform: translateX(-50%) scale(1);
+            transform-origin: center top;
+            background: transparent;
+            border-radius: 50%;
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .logo img {
+            height: 180px;
+            transition: height 0.6s ease;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.15));
+        }
+
+        /* Scrolled Logo (Desktop) */
+        .logo.scrolled {
+            top: 15px; left: 20px;
+            transform: translateX(0) scale(0.35);
+            transform-origin: top left;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 10px;
+            border: 2px solid transparent;
+            animation: neon-pulse 3s infinite alternate ease-in-out;
+        }
+        .logo.scrolled img { height: 180px; filter: none; }
+
+        .tagline {
+            font-size: 1.4rem; font-weight: 600; margin-bottom: 25px; letter-spacing: 1px; color: #444;
+        }
+
+        /* Navigation Styles */
+        nav {
+            position: fixed; z-index: 1001;
+            top: 280px; left: 50%; transform: translateX(-50%);
+            display: flex; align-items: center; justify-content: center;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50px; padding: 8px 30px;
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            animation: neon-pulse 3s infinite alternate ease-in-out;
+            animation-delay: 0.5s;
+        }
+
+        /* Scrolled Nav (Desktop) */
+        nav.scrolled {
+            top: 20px; left: auto; right: 20px;
+            transform: translateX(0);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 6px 20px;
+        }
+
+        .nav-link {
+            color: var(--primary-blue); text-decoration: none; font-weight: 600;
+            font-size: 1rem; padding: 10px 18px; position: relative;
+            display: flex; align-items: center; border-radius: 30px;
+            transition: color 0.3s ease; overflow: hidden; isolation: isolate;
+        }
+        .nav-link::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            width: 0; height: 0; background: rgba(30, 60, 114, 0.1);
+            border-radius: 50%; transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease, border-radius 0.4s ease;
+            z-index: -1;
+        }
+        .nav-link:hover::before { width: 100%; height: 100%; border-radius: 30px; }
+        .nav-link:hover { color: #0d254e; }
+        .nav-link:not(:last-child)::after {
+            content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+            height: 16px; width: 1px; background-color: rgba(30, 60, 114, 0.2);
+        }
+        .nav-link svg { margin-right: 6px; transition: transform 0.3s ease; }
+        .nav-link:hover svg { transform: scale(1.1); }
+
+        /* Scroll Indicator */
+        .scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; opacity: 1; transition: opacity 0.5s ease; pointer-events: none; }
+        .scroll-indicator.hidden { opacity: 0; }
+        .mouse { width: 26px; height: 40px; border: 2px solid var(--primary-blue); border-radius: 20px; position: relative; margin-bottom: 10px; }
+        .wheel { width: 4px; height: 8px; background: var(--primary-blue); border-radius: 2px; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); animation: mouse-scroll 1.5s infinite; }
+        @keyframes mouse-scroll { 0% { top: 6px; opacity: 1; } 100% { top: 20px; opacity: 0; } }
+        .arrow span { display: block; width: 16px; height: 16px; border-bottom: 3px solid var(--primary-blue); border-right: 3px solid var(--primary-blue); transform: rotate(45deg); margin: -8px; animation: arrow-scroll 2s infinite; }
+        .arrow span:nth-child(2){ animation-delay: -0.2s; } .arrow span:nth-child(3){ animation-delay: -0.4s; }
+        @keyframes arrow-scroll { 0% { opacity: 0; transform: rotate(45deg) translate(-10px, -10px); } 50% { opacity: 1; } 100% { opacity: 0; transform: rotate(45deg) translate(10px, 10px); } }
+
+
+        /* --- 3. CONTACT PAGE SPECIFIC STYLES (RESTORED) --- */
+        .container {
+            max-width: 420px;
+            margin: 40px auto 40px auto;
+            background: rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+            padding: 32px 24px 24px 24px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        h1 {
+            color: #ffeb3b;
+            margin-bottom: 18px;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .info {
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+            color: #fffbe7;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        input, textarea, select {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            font-family: inherit;
+            background: #fffbe7;
+            color: #222;
+            resize: vertical;
+            width: 100%;
+            box-sizing: border-box; /* Fixes padding issues */
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: 2px solid #ffeb3b;
+        }
+        button {
+            padding: 12px 0;
+            background: linear-gradient(90deg, #ffeb3b 0%, #ff9800 100%);
+            color: #222;
+            border: none;
+            border-radius: 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            width: 100%;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #ff9800 0%, #ffeb3b 100%);
+            color: #fff;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: #ffeb3b;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- 4. MOBILE RESPONSIVENESS (HEADER & FORM) --- */
+        @media (max-width: 768px) {
+    /* 1. Base State (Top of page) */
+    .logo img { height: 140px; }
+    
+    nav { 
+        top: 230px; 
+        width: 85%; 
+        padding: 8px 10px;
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+
+    /* 2. Scrolled State - MERGE INTO SINGLE BOX */
+    
+    /* The Container Box (Nav acts as the single parent box) */
+    nav.scrolled {
+        top: 10px;
+        left: 50%; /* Center horizontally */
+        right: auto; /* Reset desktop positioning */
+        transform: translateX(-50%); /* Center perfectly */
+        
+        width: 100%; /* Wide box */
+        max-width: 400px; /* Prevent it getting too wide on tablets */
+        
+        /* Layout: Push menu items to the right, leaving space for logo on left */
+        justify-content: flex-end; 
+        padding: 12px 15px 12px 70px; /* 70px Left padding reserves space for logo */
+        box-sizing: border-box;
+        
+        /* Visuals: Inherits the Yellow Neon Pulse from the main nav class */
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    /* The Logo (Sits INSIDE the nav box) */
+    .logo.scrolled {
+        /* Position visually inside the nav padding */
+        top: 15px; 
+        left: 5vw; /* Align relative to viewport/nav */
+        z-index: 1005; /* Ensure it sits on top of nav */
+        
+        transform: scale(0.28); 
+        transform-origin: top left;
+        
+        /* CRITICAL: Remove the separate box styling for mobile */
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        backdrop-filter: none !important;
+        padding: 0 !important;
+        
+        /* Disable the separate neon animation for the logo so we don't get double glow */
+        animation: none !important; 
+    }
+
+    /* Adjust Links for tight space */
+    .nav-link { 
+        padding: 6px 8px; 
+        font-size: 0.85rem; 
+    }
+    .nav-link:not(:last-child)::after { 
+        height: 12px; 
+        right: -1px;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo" id="mainLogo">
+            <img src="logo.png" alt="Codes Cool Logo">
+        </div>
+
+        <!-- <div class="tagline">Coding School of Bhadrak</div> -->
+        
+        <nav id="mainNav">
+            <a href="index.html" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 2 7.5V14a1 1 0 0 0 1 1h3.5a.5.5 0 0 0 .5-.5V11h2v3.5a.5.5 0 0 0 .5.5H13a1 1 0 0 0 1-1V7.5a.5.5 0 0 0-.146-.354l-6-6z"/>
+                </svg>
+            </a>
+            <a href="about.html" class="nav-link">About Us</a>
+            <a href="contact.html" class="nav-link">Contact Us</a>
+        </nav>
+        
+        <p style="font-size:1.1rem; opacity:0.8; margin-top:100px; color:#333;">
+            <!-- From beginners to experts, unlock your coding potential with us! -->
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </p>
+
+        <div class="scroll-indicator" id="scrollIndicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Contact Us</h1>
+        <div class="info">
+            We'd love to hear from you!<br>
+            <span style="vertical-align: middle;">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/gmail.svg" alt="Email" style="width:20px;height:20px;vertical-align:middle;margin-right:6px;filter: invert(67%) sepia(99%) saturate(749%) hue-rotate(359deg) brightness(102%) contrast(101%);">
+            </span>
+            <a href="mailto:codescool.bdk@gmail.com" style="color:#ffeb3b; margin-left:4px; text-decoration:none;">codescool.bdk@gmail.com</a>
+            <br>
+            <span style="vertical-align: middle;">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/whatsapp.svg" alt="WhatsApp" style="width:20px;height:20px;vertical-align:middle;margin-right:6px;filter: brightness(0) saturate(100%) invert(81%) sepia(81%) saturate(749%) hue-rotate(359deg) brightness(102%) contrast(101%); font-weight:bold;">
+            </span>
+            <a href="tel:+917873994229" style="color:#ffeb3b; margin-left:4px; font-weight:bold; text-decoration:none;">+91 78739 94229</a>
+        </div>
+        <form onsubmit="submitContact(event)">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="tel" name="mobile" placeholder="Your Mobile Number" pattern="[0-9]{10,15}" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <select name="course" required>
+                <option value="">Choose your Course</option>
+                <option value="Python">Python</option>
+                <option value="Core Java">Core Java</option>
+                <option value="Advance Java">Advance Java</option>
+                <option value="HTML/CSS/JS">HTML/CSS/JS</option>
+                <option value="Kids Coding">Kids Coding</option>
+                <option value="Major/Minor Project">Major/Minor Project</option>
+                <option value="Web Designing">Web Designing</option>
+                <option value="spring-spring boot-hibernate framework">spring-spring boot-hibernate framework</option>
+            </select>
+            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <a href="/" class="back-link">← Back to Home</a>
+        <div style="margin-top:32px; text-align:left;">
+            <h2 style="color:#ffeb3b; font-size:1.3rem; margin-bottom:10px;">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlemaps.svg" alt="Map Pin" style="width:22px;height:22px;vertical-align:middle;margin-right:6px;filter: invert(67%) sepia(99%) saturate(749%) hue-rotate(359deg) brightness(102%) contrast(101%);">
+                Visit Us
+            </h2>
+            <div style="margin-bottom:10px; color:#fffbe7; font-size:1.05rem;">
+                <strong>Address:</strong><br>
+                Codes Cool, Bankasahi, Near Zilla School,<br>
+                Bhadrak, Odisha, PIN-756100
+            </div>
+            <div style="border-radius:12px; overflow:hidden;">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.3230633834933!2d86.4961145750012!3d21.059755286713784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1c09b83dd909d3%3A0xc641ed3eedf32d1f!2sCodes%20Cool%20%7C%20Best%20Python%2C%20Java%20Training%20Institute!5e0!3m2!1sen!2sin!4v1749649989730!5m2!1sen!2sin"
+                    width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // --- HEADER SCROLL ANIMATION ---
+        const logo = document.getElementById('mainLogo');
+        const nav = document.getElementById('mainNav');
+        const scrollIndicator = document.getElementById('scrollIndicator');
+
+        let ticking = false;
+
+        function updateScroll() {
+            const scrollY = window.scrollY;
+            const threshold = 30; // Triggers quickly
+
+            if (scrollY > threshold) {
+                logo.classList.add('scrolled');
+                nav.classList.add('scrolled');
+                if(scrollIndicator) scrollIndicator.classList.add('hidden');
+            } else {
+                logo.classList.remove('scrolled');
+                nav.classList.remove('scrolled');
+                if(scrollIndicator) scrollIndicator.classList.remove('hidden');
+            }
+
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateScroll);
+                ticking = true;
+            }
+        });
+
+        // --- CONTACT FORM LOGIC ---
+        function submitContact(e) {
+            e.preventDefault();
+            alert("Thank you for contacting us! We'll get back to you soon.");
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
