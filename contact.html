@@ -28,14 +28,42 @@
         }
 
         /* --- 2. HEADER STYLES (NEW ANIMATIONS) --- */
-        header {
-            text-align: center;
-            padding: 180px 20px 60px 20px;
-            background: var(--bg-theme);
-            color: var(--text-dark);
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
+        /* --- 2. HEADER STYLES (WITH BACKGROUND IMAGE) --- */
+header {
+    text-align: center;
+    padding: 180px 20px 60px 20px;
+    background: var(--bg-theme); /* Base cream color behind image */
+    color: var(--text-dark);
+    position: relative; /* Essential for positioning the pseudo-element */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden; /* Ensures image doesn't spill out */
+}
+
+/* The Background Image Layer */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    
+    /* BACKGROUND IMAGE URL - Replace this with your own image if needed */
+    background: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+    background-size: cover;
+    
+    opacity: 0.6; /* 60% Opacity */
+    z-index: 0;   /* Sits behind text */
+    pointer-events: none;
+}
+
+/* Ensure Text & Scroll Indicator sit ON TOP of the image */
+header .tagline,
+header p,
+header .scroll-indicator {
+    position: relative;
+    z-index: 2; /* Higher than the background layer */
+}
 
         /* Neon Pulse Animation (Yellow) */
         @keyframes neon-pulse {
