@@ -3,9 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codes Cool - Coding School of Bhadrak</title>
+    
+    <title>Codes Cool - Best Software & Coding Training Institute in Bhadrak</title>
+    <meta name="description" content="Codes Cool Bhadrak is the premier Coding Training Center offering Java, Python, Full Stack Development, and Kids Coding courses. Join the best Software Development training in Bhadrak.">
+    <meta name="keywords" content="Codes Cool Bhadrak, Coding Training Center, Software development in bhadrak, Java Training Institute in Bhadrak, Full Stack Developer in bhadrak, Python Training Institute in Bhadrak, Web Designing Bhadrak, Kids Coding Bhadrak">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Codes Cool">
+
+    <meta property="og:title" content="Codes Cool - Coding School of Bhadrak">
+    <meta property="og:description" content="Learn Java, Python, and Full Stack Development at Bhadrak's #1 Coding Institute.">
+    <meta property="og:image" content="https://codescool.vercel.app/logo.png"> <meta property="og:url" content="https://codescool.vercel.app/">
+    <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Codes Cool",
+      "image": "https://codescool.vercel.app/logo.png",
+      "description": "Professional Software Training Institute in Bhadrak offering courses in Java, Python, and Web Development.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Bankasahi, Near Zilla School",
+        "addressLocality": "Bhadrak",
+        "addressRegion": "Odisha",
+        "postalCode": "756100",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "21.0574", 
+        "longitude": "86.4959" 
+      },
+      "telephone": "+91-7873994229",
+      "url": "https://codescool.vercel.app/",
+      "sameAs": [
+        "https://www.facebook.com/codescoolbdk",
+        "https://www.instagram.com/codes_cool"
+      ]
+    }
+    </script>
    <style>
+    .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
  /* --- 1. VARIABLES & RESET --- */
 :root {
     --primary-blue: #1e3c72;
@@ -17,7 +68,18 @@
     --glass-blur: blur(12px);
     --text-dark: #222;
 }
+/* Active menu style - Neon Yellow Glow */
+.nav-link.active {
+    color: var(--text-dark) !important; /* Force Yellow Color */
+    text-shadow: 0 0 15px var(--text-dark), 0 0 30px var(--text-dark);
+    animation: neon-pulse 3s infinite alternate ease-in-out;
+}
 
+/* Ensure the Home Icon glows if active */
+.nav-link.active svg {
+    fill: var(--text-dark) !important;
+    filter: drop-shadow(0 0 10px var(--text-dark));
+}
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -25,6 +87,7 @@ body {
     color: #fff;
     min-height: 100vh;
     overflow-x: hidden;
+    cursor: url('my-cursor.cur') 0 0, auto;
 }
 
 /* --- 2. HEADER STYLES (WITH BACKGROUND IMAGE) --- */
@@ -228,6 +291,13 @@ nav a { margin: 0; }
 .nav-link svg { margin-right: 6px; transition: transform 0.3s ease; }
 .nav-link:hover svg { transform: scale(1.1); }
 
+/* Active menu style */
+.nav-link.active {
+    color: var(--accent-yellow);
+    text-shadow: 0 0 15px var(--accent-yellow), 0 0 30px var(--accent-yellow);
+    animation: neon-pulse 3s infinite alternate ease-in-out;
+}
+
 /* --- 6. MOBILE RESPONSIVENESS --- */
 /* --- MOBILE RESPONSIVENESS: UNIFIED SINGLE BOX --- */
 @media (max-width: 768px) {
@@ -319,38 +389,41 @@ footer { text-align: center; padding: 24px 0 92px 0; font-size: 1rem; color: #ff
 </head>
 <body>
     <header>
-        <div class="logo" id="mainLogo">
-            <img src="logo.png" alt="Codes Cool Logo">
-        </div>
+    <div class="logo" id="mainLogo">
+        <img src="logo.png" alt="Codes Cool - Best Java and Python Training Institute in Bhadrak">
+    </div>
 
-        <!-- <div class="tagline">Coding School of Bhadrak</div> -->
-        
-        <nav id="mainNav">
-            <a href="index.html" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 2 7.5V14a1 1 0 0 0 1 1h3.5a.5.5 0 0 0 .5-.5V11h2v3.5a.5.5 0 0 0 .5.5H13a1 1 0 0 0 1-1V7.5a.5.5 0 0 0-.146-.354l-6-6z"/>
-                </svg>
-            </a>
-            <a href="about.html" class="nav-link">About Us</a>
-            <a href="contact.html" class="nav-link">Contact Us</a>
-        </nav>
-        
-        <p class="intro-text">
-            <!-- From beginners to experts, unlock your coding potential with us! -->
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </p>
+    <h1 class="tagline" style="display:block; margin-top: 10px; font-size: 1.5rem; color: #222; visibility: hidden;">
+        Best Coding & Software Training Center in Bhadrak
+    </h1>
+    
+    <nav id="mainNav">
+        <a href="index.html" class="nav-link active">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 2 7.5V14a1 1 0 0 0 1 1h3.5a.5.5 0 0 0 .5-.5V11h2v3.5a.5.5 0 0 0 .5.5H13a1 1 0 0 0 1-1V7.5a.5.5 0 0 0-.146-.354l-6-6z"/>
+            </svg>
+        </a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+    </nav>
+    
+    <p class="intro-text" style="font-size:1.1rem; opacity:0.9; margin-top:20px; color:#333; max-width: 700px; margin-left: auto; margin-right: auto; visibility: hidden;">
+        Unlock your potential with the <strong>best software development course in Bhadrak</strong>. 
+        From <strong>Java</strong> and <strong>Python</strong> to <strong>Full Stack Development</strong>, 
+        we train beginners to become experts.
+    </p>
 
-        <div class="scroll-indicator" id="scrollIndicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <div class="arrow">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <div class="scroll-indicator" id="scrollIndicator">
+        <div class="mouse">
+            <div class="wheel"></div>
         </div>
-    </header>
+        <div class="arrow">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
 
     <section class="courses-section" id="courses">
         </section>

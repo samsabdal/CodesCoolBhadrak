@@ -3,9 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Codes Cool</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
-    <style>
+    
+    <title>Codes Cool - Best Software & Coding Training Institute in Bhadrak</title>
+    <meta name="description" content="Codes Cool Bhadrak is the premier Coding Training Center offering Java, Python, Full Stack Development, and Kids Coding courses. Join the best Software Development training in Bhadrak.">
+    <meta name="keywords" content="Codes Cool Bhadrak, Coding Training Center, Software development in bhadrak, Java Training Institute in Bhadrak, Full Stack Developer in bhadrak, Python Training Institute in Bhadrak, Web Designing Bhadrak, Kids Coding Bhadrak">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Codes Cool">
+
+    <meta property="og:title" content="Codes Cool - Coding School of Bhadrak">
+    <meta property="og:description" content="Learn Java, Python, and Full Stack Development at Bhadrak's #1 Coding Institute.">
+    <meta property="og:image" content="https://codescool.vercel.app/logo.png"> <meta property="og:url" content="https://codescool.vercel.app/">
+    <meta property="og:type" content="website">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Codes Cool",
+      "image": "https://codescool.vercel.app/logo.png",
+      "description": "Professional Software Training Institute in Bhadrak offering courses in Java, Python, and Web Development.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Bankasahi, Near Zilla School",
+        "addressLocality": "Bhadrak",
+        "addressRegion": "Odisha",
+        "postalCode": "756100",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "21.0574", 
+        "longitude": "86.4959" 
+      },
+      "telephone": "+91-7873994229",
+      "url": "https://codescool.vercel.app/",
+      "sameAs": [
+        "https://www.facebook.com/codescool",
+        "https://www.instagram.com/codescool"
+      ]
+    }
+    </script>
+   <style>
+    .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
         /* --- UNIVERSAL HEADER CSS --- */
 :root {
     --primary-blue: #1e3c72;
@@ -26,7 +77,18 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 }
+/* Active menu style - Neon Yellow Glow */
+.nav-link.active {
+    color: var(--text-dark) !important; /* Force Yellow Color */
+    text-shadow: 0 0 15px var(--text-dark), 0 0 30px var(--text-dark);
+    animation: neon-pulse 3s infinite alternate ease-in-out;
+}
 
+/* Ensure the Home Icon glows if active */
+.nav-link.active svg {
+    fill: var(--text-dark) !important;
+    filter: drop-shadow(0 0 10px var(--text-dark));
+}
 /* Header Container (Acts as spacer) */
 /* --- 2. HEADER STYLES (WITH BACKGROUND IMAGE) --- */
 header {
@@ -167,6 +229,13 @@ nav.scrolled {
 .nav-link svg { margin-right: 6px; transition: transform 0.3s ease; }
 .nav-link:hover svg { transform: scale(1.1); }
 
+/* Active menu style */
+.nav-link.active {
+    color: var(--accent-yellow);
+    text-shadow: 0 0 15px var(--accent-yellow), 0 0 30px var(--accent-yellow);
+    animation: neon-pulse 3s infinite alternate ease-in-out;
+}
+
 /* --- PAGE SPECIFIC STYLES (KEEP EXISTING) --- */
 /* Ensure you keep the .about-container, .contact-container, etc styles from your original files here */
 /* I've included common ones below just in case: */
@@ -266,14 +335,14 @@ h1 { color: #ffeb3b; margin-bottom: 18px; font-size: 2rem; text-align: center; }
     <!-- <div class="tagline">Coding School of Bhadrak</div> -->
     
     <nav id="mainNav">
-        <a href="index.html" class="nav-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 2 7.5V14a1 1 0 0 0 1 1h3.5a.5.5 0 0 0 .5-.5V11h2v3.5a.5.5 0 0 0 .5.5H13a1 1 0 0 0 1-1V7.5a.5.5 0 0 0-.146-.354l-6-6z"/>
-            </svg>
-        </a>
-        <a href="about.html" class="nav-link">About Us</a>
-        <a href="contact.html" class="nav-link">Contact Us</a>
-    </nav>
+    <a href="index.html" class="nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 2 7.5V14a1 1 0 0 0 1 1h3.5a.5.5 0 0 0 .5-.5V11h2v3.5a.5.5 0 0 0 .5.5H13a1 1 0 0 0 1-1V7.5a.5.5 0 0 0-.146-.354l-6-6z"/>
+        </svg>
+    </a>
+    <a href="about.html" class="nav-link active">About Us</a>
+    <a href="contact.html" class="nav-link">Contact Us</a>
+</nav>
     
     <p style="font-size:1.1rem; opacity:0.8; margin-top:100px; color:#333;">
         <!-- From beginners to experts, unlock your coding potential with us! -->
